@@ -52,7 +52,7 @@ public class Registerclass extends javax.swing.JPanel {
         Confirm = new javax.swing.JButton();
         Back = new javax.swing.JButton();
 
-        // Set text for labels
+        
         JLabelFirstName.setText("First Name:");
         JLabelLastName.setText("Last Name:");
         JLabelUsername.setText("Username:");

@@ -34,7 +34,7 @@ public class UserLoginclass extends javax.swing.JPanel {
         Confirm = new javax.swing.JButton();
         Back = new javax.swing.JButton();
 
-        // Set text for labels
+        
         JLabelUsername.setText("Username:");
         JLabelPassword.setText("Password:");
 
