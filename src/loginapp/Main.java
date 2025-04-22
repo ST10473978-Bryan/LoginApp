@@ -10,11 +10,11 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 500);
 
-        // Set up a CardLayout to switch between panels
+       
         CardLayout cardLayout = new CardLayout();
         JPanel mainPanel = new JPanel(cardLayout);
 
-        // Create instances of the different panels
+        
         Welcomeclass welcomePanel = new Welcomeclass();
         Registerclass registerPanel = new Registerclass();
         UserLoginclass userLoginPanel = new UserLoginclass();
@@ -73,3 +73,9 @@ public class Main {
         frame.setVisible(true);
     }
 }
+/*Section where AI was used: Prog Main.java Part 1.
+Name of AI tool used: OpenAI, Chatgpt.
+Purpose/intention behind use: The AI tool was used to organize my classes as well as,simplify and implement action listeners in order to ensure each botton works as intended.  
+Date used: 20 April 2025
+Link: https://github.com/copilot/c/6c2ce417-3372-4bd0-bcdc-61454a2cf521
+*/
