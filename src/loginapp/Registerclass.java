@@ -1,8 +1,10 @@
 package loginapp;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class Registerclass extends javax.swing.JPanel {
+public class Registerclass extends JPanel {
 
     public Registerclass() {
         initComponents();
@@ -37,106 +39,88 @@ public class Registerclass extends javax.swing.JPanel {
     }
 
     private void initComponents() {
-        JLabelFirstName = new javax.swing.JLabel();
-        JLabelLastName = new javax.swing.JLabel();
-        JLabelUsername = new javax.swing.JLabel();
-        JLabelPassword = new javax.swing.JLabel();
-        JLabelPhoneNumber = new javax.swing.JLabel();
+        // Set panel layout and background
+        setLayout(new GridBagLayout());
+        setBackground(new Color(240, 248, 255)); // Light blue background
 
-        FirstNameField = new javax.swing.JTextField();
-        LastNameField = new javax.swing.JTextField();
-        UsernameField = new javax.swing.JTextField();
-        PasswordField = new javax.swing.JPasswordField();
-        PhoneNumberField = new javax.swing.JTextField();
+        // Create labels and fields
+        JLabel titleLabel = new JLabel("Register");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setForeground(new Color(0, 102, 204)); // Dark blue
 
-        Confirm = new javax.swing.JButton();
-        Back = new javax.swing.JButton();
+        JLabelFirstName = new JLabel("First Name:");
+        JLabelLastName = new JLabel("Last Name:");
+        JLabelUsername = new JLabel("Username:");
+        JLabelPassword = new JLabel("Password:");
+        JLabelPhoneNumber = new JLabel("Phone Number:");
 
-        
-        JLabelFirstName.setText("First Name:");
-        JLabelLastName.setText("Last Name:");
-        JLabelUsername.setText("Username:");
-        JLabelPassword.setText("Password:");
-        JLabelPhoneNumber.setText("Phone Number:");
+        FirstNameField = new JTextField(15);
+        LastNameField = new JTextField(15);
+        UsernameField = new JTextField(15);
+        PasswordField = new JPasswordField(15);
+        PhoneNumberField = new JTextField(15);
 
-        Confirm.setText("Confirm");
-        Back.setText("Back");
+        Confirm = new JButton("Confirm");
+        Back = new JButton("Back");
 
-        // Layout design
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(30)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(JLabelFirstName)
-                            .addGap(18)
-                            .addComponent(FirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(JLabelLastName)
-                            .addGap(18)
-                            .addComponent(LastNameField))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(JLabelUsername)
-                            .addGap(18)
-                            .addComponent(UsernameField))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(JLabelPassword)
-                            .addGap(18)
-                            .addComponent(PasswordField))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(JLabelPhoneNumber)
-                            .addGap(18)
-                            .addComponent(PhoneNumberField))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(30)
-                            .addComponent(Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(30))
-        );
-        layout.setVerticalGroup(
-            layout.createSequentialGroup()
-                .addGap(20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLabelFirstName)
-                    .addComponent(FirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLabelLastName)
-                    .addComponent(LastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLabelUsername)
-                    .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLabelPassword)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLabelPhoneNumber)
-                    .addComponent(PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20)
-        );
+        // Style buttons
+        Confirm.setBackground(new Color(0, 204, 102)); // Green
+        Confirm.setForeground(Color.WHITE);
+        Confirm.setFont(new Font("Arial", Font.BOLD, 14));
+
+        Back.setBackground(new Color(204, 0, 0)); // Red
+        Back.setForeground(Color.WHITE);
+        Back.setFont(new Font("Arial", Font.BOLD, 14));
+
+        // Add components to the panel with layout management
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10); // Padding
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        add(titleLabel, gbc);
+
+        gbc.gridwidth = 1;
+        gbc.gridy++;
+        gbc.gridx = 0;
+        add(JLabelFirstName, gbc);
+        gbc.gridx = 1;
+        add(FirstNameField, gbc);
+
+        gbc.gridy++;
+        gbc.gridx = 0;
+        add(JLabelLastName, gbc);
+        gbc.gridx = 1;
+        add(LastNameField, gbc);
+
+        gbc.gridy++;
+        gbc.gridx = 0;
+        add(JLabelUsername, gbc);
+        gbc.gridx = 1;
+        add(UsernameField, gbc);
+
+        gbc.gridy++;
+        gbc.gridx = 0;
+        add(JLabelPassword, gbc);
+        gbc.gridx = 1;
+        add(PasswordField, gbc);
+
+        gbc.gridy++;
+        gbc.gridx = 0;
+        add(JLabelPhoneNumber, gbc);
+        gbc.gridx = 1;
+        add(PhoneNumberField, gbc);
+
+        gbc.gridy++;
+        gbc.gridx = 0;
+        add(Back, gbc);
+        gbc.gridx = 1;
+        add(Confirm, gbc);
     }
 
-    private javax.swing.JButton Back;
-    private javax.swing.JButton Confirm;
-    private javax.swing.JTextField FirstNameField;
-    private javax.swing.JTextField LastNameField;
-    private javax.swing.JTextField UsernameField;
-    private javax.swing.JPasswordField PasswordField;
-    private javax.swing.JTextField PhoneNumberField;
-
-    private javax.swing.JLabel JLabelFirstName;
-    private javax.swing.JLabel JLabelLastName;
-    private javax.swing.JLabel JLabelUsername;
-    private javax.swing.JLabel JLabelPassword;
-    private javax.swing.JLabel JLabelPhoneNumber;
+    private JButton Back, Confirm;
+    private JTextField FirstNameField, LastNameField, UsernameField, PhoneNumberField;
+    private JPasswordField PasswordField;
+    private JLabel JLabelFirstName, JLabelLastName, JLabelUsername, JLabelPassword, JLabelPhoneNumber;
 }

@@ -12,6 +12,9 @@ public class Login {
     /**
      * Validates the username.
      * The username must contain an underscore and be no more than 5 characters long.
+     *
+     * @param username The username to validate.
+     * @return True if the username is valid, false otherwise.
      */
     public boolean checkUserName(String username) {
         return username.contains("_") && username.length() <= 5;
@@ -20,6 +23,9 @@ public class Login {
     /**
      * Validates the password complexity.
      * The password must contain at least 8 characters, a capital letter, a number, and a special character.
+     *
+     * @param password The password to validate.
+     * @return True if the password is valid, false otherwise.
      */
     public boolean checkPasswordComplexity(String password) {
         String passwordPattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$";
@@ -29,6 +35,9 @@ public class Login {
     /**
      * Validates the cell number format.
      * The cell number must start with '+' and contain between 10 and 13 digits.
+     *
+     * @param cellNumber The cell number to validate.
+     * @return True if the cell number is valid, false otherwise.
      */
     public boolean checkCellNumber(String cellNumber) {
         String cellNumberPattern = "^\\+\\d{10,13}$";
@@ -38,6 +47,13 @@ public class Login {
     /**
      * Registers a new user.
      * Validates the username, password, and cell number before storing them.
+     *
+     * @param username   The username of the user.
+     * @param password   The password for the user.
+     * @param cellNumber The cell number for the user.
+     * @param firstName  The user's first name.
+     * @param lastName   The user's last name.
+     * @return A message indicating whether registration was successful or why it failed.
      */
     public String registerUser(String username, String password, String cellNumber, String firstName, String lastName) {
         if (!checkUserName(username)) {
@@ -62,6 +78,10 @@ public class Login {
 
     /**
      * Logs in an existing user by validating the username and password.
+     *
+     * @param username The username provided by the user.
+     * @param password The password provided by the user.
+     * @return True if the username and password match, false otherwise.
      */
     public boolean loginUser(String username, String password) {
         return username.equals(this.storedUsername) && password.equals(this.storedPassword);
@@ -69,6 +89,9 @@ public class Login {
 
     /**
      * Returns a login status message.
+     *
+     * @param loginSuccessful Whether the login attempt was successful.
+     * @return A message indicating the login status.
      */
     public String returnLoginStatus(boolean loginSuccessful) {
         return loginSuccessful

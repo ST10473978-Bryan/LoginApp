@@ -1,8 +1,10 @@
 package loginapp;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class Welcomeclass extends javax.swing.JPanel {
+public class Welcomeclass extends JPanel {
 
     public Welcomeclass() {
         initComponents();
@@ -17,39 +19,45 @@ public class Welcomeclass extends javax.swing.JPanel {
     }
 
     private void initComponents() {
-        Welcome = new javax.swing.JLabel();
-        Register = new javax.swing.JButton();
-        Login = new javax.swing.JButton();
+        // Set panel layout and background
+        setLayout(new GridBagLayout());
+        setBackground(new Color(240, 248, 255)); // Light blue background
 
-        Welcome.setFont(new java.awt.Font("Arial", 1, 24));
-        Welcome.setText("Welcome");
+        // Create components
+        JLabel welcomeLabel = new JLabel("Welcome to the Login System");
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        welcomeLabel.setForeground(new Color(0, 102, 204)); // Dark blue
 
-        Register.setFont(new java.awt.Font("Arial", 0, 20));
-        Register.setText("Register");
+        Register = new JButton("Register");
+        Login = new JButton("Login");
 
-        Login.setFont(new java.awt.Font("Arial", 0, 20));
-        Login.setText("Login");
+        // Style buttons
+        Register.setBackground(new Color(0, 204, 102)); // Green
+        Register.setForeground(Color.WHITE);
+        Register.setFont(new Font("Arial", Font.BOLD, 14));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                .addComponent(Welcome)
-                .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createSequentialGroup()
-                .addGap(50)
-                .addComponent(Welcome)
-                .addGap(30)
-                .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20)
-                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        Login.setBackground(new Color(0, 102, 204)); // Blue
+        Login.setForeground(Color.WHITE);
+        Login.setFont(new Font("Arial", Font.BOLD, 14));
+
+        // Layout components
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(20, 20, 20, 20); // Padding
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2; // Center-align
+        add(welcomeLabel, gbc);
+
+        gbc.gridwidth = 1; // Reset grid width
+        gbc.gridy++;
+        gbc.gridx = 0;
+        add(Register, gbc);
+
+        gbc.gridx = 1;
+        add(Login, gbc);
     }
 
-    private javax.swing.JButton Login;
-    private javax.swing.JButton Register;
-    private javax.swing.JLabel Welcome;
+    private JButton Register;
+    private JButton Login;
 }
