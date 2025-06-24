@@ -61,14 +61,15 @@ public class Main {
 
     private static void runMessagingSystem(JFrame frame) {
         while (true) {
-            String menu = "Main Menu\n1. Send Message\n2. Show Recently Sent Messages (Coming Soon)\n3. Quit";
+            String menu = "Main Menu\n1. Send Message\n2. Show Recently Sent Messages\n3. Quit";
             String input = JOptionPane.showInputDialog(frame, menu, "QuickChat Menu", JOptionPane.PLAIN_MESSAGE);
             if (input == null || input.trim().equals("3")) {
                 JOptionPane.showMessageDialog(frame, "Total messages sent: " + Message.returnTotalMessages());
                 break;
             }
             if (input.trim().equals("1")) handleSendMessages(frame);
-            else JOptionPane.showMessageDialog(frame, "Feature coming soon.");
+            else if (input.trim().equals("2")) runArraysMenu(frame);
+            else JOptionPane.showMessageDialog(frame, "Invalid option.");
         }
     }
 
@@ -118,6 +119,89 @@ public class Main {
             } else if (choice == 1) result = msgObj.sendMessage(2);
             else if (choice == 2) result = msgObj.sendMessage(3);
             if (!result.isEmpty()) JOptionPane.showMessageDialog(frame, result);
+        }
+    }
+
+    // --- START PART 3: Arrays (Tasks) menu below ---
+
+    private static void runArraysMenu(JFrame frame) {
+        while (true) {
+            String menu =
+                    "Tasks Menu\n" +
+                    "1. Display all tasks\n" +
+                    "2. Display done tasks (Developer, Name, Duration)\n" +
+                    "3. Display Developer & Duration of the longest task\n" +
+                    "4. Search for a task by Task Name\n" +
+                    "5. Search all tasks by Developer\n" +
+                    "6. Delete a task by Task Name\n" +
+                    "7. Display full tasks report\n" +
+                    "8. Back to QuickChat Menu";
+            String input = JOptionPane.showInputDialog(frame, menu, "Tasks Menu", JOptionPane.PLAIN_MESSAGE);
+            if (input == null || input.trim().equals("8")) break;
+
+            switch (input.trim()) {
+                case "1":
+                    JOptionPane.showMessageDialog(frame, ArrayManager.getFullReport());
+                    break;
+                case "2": {
+                    StringBuilder sb = new StringBuilder("*** DONE TASKS ***\n");
+                    for (ArrayTask t : ArrayManager.getTasksByStatus("Done")) {
+                        sb.append("Developer: ").append(t.getDeveloper())
+                            .append(" | Name: ").append(t.getTaskName())
+                            .append(" | Duration: ").append(t.getDuration()).append("\n");
+                    }
+                    if (sb.toString().equals("*** DONE TASKS ***\n"))
+                        sb.append("No done tasks found.\n");
+                    JOptionPane.showMessageDialog(frame, sb.toString());
+                    break;
+                }
+                case "3": {
+                    ArrayTask t = ArrayManager.getLongestDurationTask();
+                    if (t != null)
+                        JOptionPane.showMessageDialog(frame, "Developer: " + t.getDeveloper() + "\nDuration: " + t.getDuration());
+                    else
+                        JOptionPane.showMessageDialog(frame, "No tasks found.");
+                    break;
+                }
+                case "4": {
+                    String taskName = JOptionPane.showInputDialog(frame, "Enter Task Name to search:");
+                    if (taskName == null) break;
+                    ArrayTask t = ArrayManager.getTaskByName(taskName);
+                    if (t != null)
+                        JOptionPane.showMessageDialog(frame, t.toString());
+                    else
+                        JOptionPane.showMessageDialog(frame, "Task not found.");
+                    break;
+                }
+                case "5": {
+                    String dev = JOptionPane.showInputDialog(frame, "Enter Developer Name to search:");
+                    if (dev == null) break;
+                    StringBuilder sb = new StringBuilder("*** TASKS FOR " + dev + " ***\n");
+                    for (ArrayTask t : ArrayManager.getTasksByDeveloper(dev)) {
+                        sb.append("Task Name: ").append(t.getTaskName())
+                            .append(" | Status: ").append(t.getStatus()).append("\n");
+                    }
+                    if (sb.toString().endsWith("*** TASKS FOR " + dev + " ***\n"))
+                        sb.append("No tasks for this developer.\n");
+                    JOptionPane.showMessageDialog(frame, sb.toString());
+                    break;
+                }
+                case "6": {
+                    String taskName = JOptionPane.showInputDialog(frame, "Enter Task Name to delete:");
+                    if (taskName == null) break;
+                    boolean deleted = ArrayManager.deleteTaskByName(taskName);
+                    if (deleted)
+                        JOptionPane.showMessageDialog(frame, "Entry \"" + taskName + "\" successfully deleted.");
+                    else
+                        JOptionPane.showMessageDialog(frame, "Task not found.");
+                    break;
+                }
+                case "7":
+                    JOptionPane.showMessageDialog(frame, ArrayManager.getFullReport());
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(frame, "Invalid option.");
+            }
         }
     }
 }
